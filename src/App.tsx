@@ -10,15 +10,8 @@ import { validationSchema } from "./validation"
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1)
-  const onClickChangeQuestionForward = () => {
-    setQuestionNumber(questionNumber + 1)
-  }
 
-  const onClickChangeQuestionBack = () => {
-    setQuestionNumber(questionNumber - 1)
-  }
-
-  const { control, handleSubmit, reset, watch } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(validationSchema),
   })
 
@@ -27,12 +20,19 @@ function App() {
     // reset({ name: "", team: "" })
   })
 
-  console.log(watch("sex"), "watch")
+  const onClickChangeQuestionForward = () => {
+    setQuestionNumber(questionNumber + 1)
+  }
+
+  const onClickChangeQuestionBack = () => {
+    setQuestionNumber(questionNumber - 1)
+  }
 
   const questions: Record<number, ReactNode> = useMemo(
     () => ({
       1: (
         <Select
+          key={1}
           control={control}
           name="sex"
           label="Pohlaví"
@@ -41,6 +41,7 @@ function App() {
       ),
       2: (
         <Select
+          key={2}
           control={control}
           name="child"
           label="Chce-li ditě"
@@ -49,6 +50,7 @@ function App() {
       ),
       3: (
         <Input
+          key={3}
           control={control}
           name="age"
           label="Věk"
@@ -58,6 +60,7 @@ function App() {
       ),
       4: (
         <Input
+          key={4}
           control={control}
           name="height"
           label="Vyška"
@@ -67,6 +70,7 @@ function App() {
       ),
       5: (
         <Input
+          key={5}
           control={control}
           name="income"
           label="Přijem"
@@ -76,6 +80,7 @@ function App() {
       ),
       6: (
         <Select
+          key={6}
           control={control}
           name="nationality"
           label="Národnost"
@@ -84,6 +89,7 @@ function App() {
       ),
       7: (
         <Select
+          key={7}
           control={control}
           name="eyesColor"
           label="Barvá Oči"
@@ -92,6 +98,7 @@ function App() {
       ),
       8: (
         <Select
+          key={8}
           control={control}
           name="education"
           label="Vzdělaní"
@@ -100,6 +107,7 @@ function App() {
       ),
       9: (
         <Select
+          key={9}
           control={control}
           name="smokes"
           label="Kouří"
@@ -108,6 +116,7 @@ function App() {
       ),
       10: (
         <Select
+          key={10}
           control={control}
           name="alcohol"
           label="Pijé alkohol"
@@ -116,6 +125,7 @@ function App() {
       ),
       11: (
         <Select
+          key={11}
           control={control}
           name="married"
           label="Vyloučit ženaté/vdané"
@@ -143,13 +153,13 @@ function App() {
         </p>
         <Section>{questions[questionNumber]}</Section>
         <div className="flex gap-2 ">
+          {questionNumber > 1 && (
+            <Button name="Zpět" onClick={onClickChangeQuestionBack} />
+          )}
           {questionNumber === 11 ? (
             <Button name="Vyhodnotit" onClick={onClickSubmit} />
           ) : (
             <>
-              {questionNumber > 1 && (
-                <Button name="Zpět" onClick={onClickChangeQuestionBack} />
-              )}
               <Button name="Dále" onClick={onClickChangeQuestionForward} />
             </>
           )}

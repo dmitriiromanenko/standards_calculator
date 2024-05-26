@@ -17,7 +17,7 @@ const Input = ({
   name,
 }: InputProps) => {
   const {
-    field: { onBlur, onChange, value },
+    field: { onChange, value },
     fieldState: { error },
   } = useController({
     control,

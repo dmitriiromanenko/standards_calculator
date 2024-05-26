@@ -16,14 +16,19 @@ export type ValidationSchemaType = {
 
 export const validationSchema: yup.ObjectSchema<ValidationSchemaType> =
   yup.object({
-    sex: yup.object({
-      id: yup.number().required(),
-      name: yup.string().required(),
-    }),
-    child: yup.object({
-      id: yup.number().required(),
-      name: yup.string().required(),
-    }),
+    sex: yup
+      .object({
+        id: yup.number().required(),
+        name: yup.string().required(),
+      })
+      .nullable()
+      .required("This field is required."),
+    child: yup
+      .object({
+        id: yup.number().required(),
+        name: yup.string().required(),
+      })
+      .required(),
     age: yup.number().required(),
     height: yup.number().required(),
     income: yup.number().required(),

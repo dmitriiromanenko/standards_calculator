@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import {
   Label,
   Listbox,
@@ -24,20 +23,19 @@ type SelectProps = {
 
 const Select = ({ label, optionsArray, control, name }: SelectProps) => {
   const {
-    field: { value, onChange },
+    field: { onChange, value },
     fieldState: { error },
   } = useController({
     control,
     name,
-    defaultValue: optionsArray[0],
+    defaultValue: { id: 0, name: null },
   })
 
-  console.log(value)
   console.log(error?.message)
-  console.log("new component")
+  console.log(value, "value")
 
   return (
-    <Listbox value={value} onChange={onChange}>
+    <Listbox value={error?.message ?? value} onChange={onChange}>
       {({ open }) => (
         <>
           <Label className="block text-sm font-medium leading-6 text-gray-900">
