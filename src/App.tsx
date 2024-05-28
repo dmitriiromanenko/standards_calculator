@@ -1,9 +1,14 @@
 import { ReactNode, useMemo, useState } from "react"
 import Input from "./components/input/Input"
 import Select from "./components/select/Select"
-import { EDUCATION, EYES_COLOR, NATIONALITY, SEX, YesNo } from "./constanits"
-import Button from "./button/Button"
-import Section from "./components/section/Section"
+import {
+  EDUCATION,
+  EYES_COLOR,
+  NATIONALITY,
+  SEX,
+  YesNo,
+  YesNoDoesNotMatter,
+} from "./constanits"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { validationSchema } from "./validation"
@@ -11,22 +16,9 @@ import { validationSchema } from "./validation"
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1)
 
-  const { control, handleSubmit, reset } = useForm({
+  const { control, handleSubmit } = useForm({
     resolver: yupResolver(validationSchema),
   })
-
-  const onClickSubmit = handleSubmit((data) => {
-    console.log(data)
-    // reset({ name: "", team: "" })
-  })
-
-  const onClickChangeQuestionForward = () => {
-    setQuestionNumber(questionNumber + 1)
-  }
-
-  const onClickChangeQuestionBack = () => {
-    setQuestionNumber(questionNumber - 1)
-  }
 
   const questions: Record<number, ReactNode> = useMemo(
     () => ({
@@ -36,6 +28,8 @@ function App() {
           control={control}
           name="sex"
           label="Pohlaví"
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
           optionsArray={SEX}
         />
       ),
@@ -45,7 +39,9 @@ function App() {
           control={control}
           name="child"
           label="Chce-li ditě"
-          optionsArray={YesNo}
+          optionsArray={YesNoDoesNotMatter}
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
         />
       ),
       3: (
@@ -55,7 +51,11 @@ function App() {
           name="age"
           label="Věk"
           type="number"
+          minValue={18}
+          maxValue={80}
           placeholder="Zvolte věk od 18 do 80"
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
         />
       ),
       4: (
@@ -65,7 +65,11 @@ function App() {
           name="height"
           label="Vyška"
           type="number"
+          minValue={140}
+          maxValue={180}
           placeholder="Zvolte vyšku od 140cm do 240cm"
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
         />
       ),
       5: (
@@ -75,7 +79,11 @@ function App() {
           name="income"
           label="Přijem"
           type="number"
+          minValue={0}
+          maxValue={100000}
           placeholder="Zvolte přijem od 0 do 100 000"
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
         />
       ),
       6: (
@@ -85,6 +93,8 @@ function App() {
           name="nationality"
           label="Národnost"
           optionsArray={NATIONALITY}
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
         />
       ),
       7: (
@@ -94,6 +104,8 @@ function App() {
           name="eyesColor"
           label="Barvá Oči"
           optionsArray={EYES_COLOR}
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
         />
       ),
       8: (
@@ -103,6 +115,8 @@ function App() {
           name="education"
           label="Vzdělaní"
           optionsArray={EDUCATION}
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
         />
       ),
       9: (
@@ -111,7 +125,9 @@ function App() {
           control={control}
           name="smokes"
           label="Kouří"
-          optionsArray={YesNo}
+          optionsArray={YesNoDoesNotMatter}
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
         />
       ),
       10: (
@@ -120,7 +136,9 @@ function App() {
           control={control}
           name="alcohol"
           label="Pijé alkohol"
-          optionsArray={YesNo}
+          optionsArray={YesNoDoesNotMatter}
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
         />
       ),
       11: (
@@ -130,10 +148,13 @@ function App() {
           name="married"
           label="Vyloučit ženaté/vdané"
           optionsArray={YesNo}
+          questionNumber={questionNumber}
+          setQuestionNumber={setQuestionNumber}
+          handleSubmit={handleSubmit}
         />
       ),
     }),
-    [control]
+    [control, handleSubmit, questionNumber]
   )
 
   return (
@@ -151,19 +172,7 @@ function App() {
         <p className="text-xs text-grey-dark text-right text-grey-dark">
           Otazká {questionNumber} z 11
         </p>
-        <Section>{questions[questionNumber]}</Section>
-        <div className="flex gap-2 ">
-          {questionNumber > 1 && (
-            <Button name="Zpět" onClick={onClickChangeQuestionBack} />
-          )}
-          {questionNumber === 11 ? (
-            <Button name="Vyhodnotit" onClick={onClickSubmit} />
-          ) : (
-            <>
-              <Button name="Dále" onClick={onClickChangeQuestionForward} />
-            </>
-          )}
-        </div>
+        <div className="mb-4">{questions[questionNumber]}</div>
       </div>
     </>
   )

@@ -13,7 +13,7 @@ export const SEX = [
   },
 ]
 
-export const YesNo = [
+export const YesNoDoesNotMatter = [
   {
     id: 0,
     name: "Nezáleží",
@@ -24,6 +24,17 @@ export const YesNo = [
   },
   {
     id: 2,
+    name: "Ne",
+  },
+]
+
+export const YesNo = [
+  {
+    id: 0,
+    name: "Ano",
+  },
+  {
+    id: 1,
     name: "Ne",
   },
 ]
