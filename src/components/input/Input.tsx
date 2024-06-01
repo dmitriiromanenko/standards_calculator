@@ -3,29 +3,32 @@ import { NameAlias, ValidationSchemaType } from "../../validation"
 import Button from "../../button/Button"
 import Section from "../section/Section"
 import { Dispatch } from "react"
+import RangeSlider from "react-range-slider-input"
+import "react-range-slider-input/dist/style.css"
+import "./styles.css"
 
 type InputProps = {
   label: string
-  type: "text" | "number"
-  placeholder: string
   control: Control<ValidationSchemaType>
   name: NameAlias
   setQuestionNumber: Dispatch<React.SetStateAction<number>>
   questionNumber: number
   minValue: number
   maxValue: number
+  defaultValue: number[]
+  labelValue: string
 }
 
 const Input = ({
   label,
-  type = "text",
-  placeholder,
   control,
   name,
   setQuestionNumber,
   questionNumber,
   minValue,
+  defaultValue,
   maxValue,
+  labelValue,
 }: InputProps) => {
   const {
     field: { onChange, value },
@@ -33,6 +36,7 @@ const Input = ({
   } = useController({
     control,
     name,
+    defaultValue: defaultValue,
   })
 
   const onClickChangeQuestionForward = () => {
@@ -43,6 +47,8 @@ const Input = ({
     setQuestionNumber(questionNumber - 1)
   }
 
+  console.log(value, defaultValue, "input value")
+
   return (
     <>
       <Section>
@@ -50,17 +56,17 @@ const Input = ({
           htmlFor="price"
           className="block text-sm font-medium leading-6 text-gray-900"
         >
-          {error?.message ?? label}
+          {error?.message ??
+            `${label}: ${value?.[0]} - ${value[1]} ${labelValue}`}
         </label>
-        <div className="relative mt-2 rounded-md shadow-sm">
-          <input
-            type={type}
-            onChange={onChange}
-            value={value}
+        <div className="flex align-center relative mt-2 rounded-md shadow-sm">
+          <RangeSlider
             min={minValue}
             max={maxValue}
-            className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6"
-            placeholder={placeholder}
+            value={value}
+            step={1}
+            className="text-pink-light"
+            onInput={onChange}
           />
         </div>
       </Section>
@@ -69,11 +75,7 @@ const Input = ({
           <Button name="Zpět" onClick={onClickChangeQuestionBack} />
         )}
         <Button
-          isDisabled={
-            !value ||
-            (value as number) < minValue ||
-            (value as number) > maxValue
-          }
+          isDisabled={false}
           name="Dále"
           onClick={onClickChangeQuestionForward}
         />

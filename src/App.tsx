@@ -12,11 +12,12 @@ import {
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { validationSchema } from "./validation"
+import ResultComponent from "./components/result/ResultComponent"
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1)
 
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(validationSchema),
   })
 
@@ -50,10 +51,10 @@ function App() {
           control={control}
           name="age"
           label="Věk"
-          type="number"
+          labelValue="let"
           minValue={18}
           maxValue={80}
-          placeholder="Zvolte věk od 18 do 80"
+          defaultValue={[30, 50]}
           questionNumber={questionNumber}
           setQuestionNumber={setQuestionNumber}
         />
@@ -63,11 +64,11 @@ function App() {
           key={4}
           control={control}
           name="height"
-          label="Vyška"
-          type="number"
+          label={"Vyška"}
+          labelValue={"cm"}
           minValue={140}
-          maxValue={180}
-          placeholder="Zvolte vyšku od 140cm do 240cm"
+          maxValue={230}
+          defaultValue={[170, 200]}
           questionNumber={questionNumber}
           setQuestionNumber={setQuestionNumber}
         />
@@ -78,10 +79,10 @@ function App() {
           control={control}
           name="income"
           label="Přijem"
-          type="number"
+          labelValue="czk"
           minValue={0}
           maxValue={100000}
-          placeholder="Zvolte přijem od 0 do 100 000"
+          defaultValue={[30000, 70000]}
           questionNumber={questionNumber}
           setQuestionNumber={setQuestionNumber}
         />
@@ -102,7 +103,7 @@ function App() {
           key={7}
           control={control}
           name="eyesColor"
-          label="Barvá Oči"
+          label="Barvá oči"
           optionsArray={EYES_COLOR}
           questionNumber={questionNumber}
           setQuestionNumber={setQuestionNumber}
@@ -153,28 +154,25 @@ function App() {
           handleSubmit={handleSubmit}
         />
       ),
+      12: (
+        <ResultComponent
+          questionNumber={questionNumber}
+          reset={reset}
+          handleSubmit={handleSubmit}
+          setQuestionNumber={setQuestionNumber}
+        />
+      ),
     }),
-    [control, handleSubmit, questionNumber]
+    [control, handleSubmit, questionNumber, reset]
   )
 
   return (
-    <>
-      <div className="mt-4 px-4 py-4  max-w-2xl w-full ">
-        <h1 className="text-3xl font-bold text-black text-center text-grey-dark">
-          Kalkulačka standardů
-        </h1>
-        <h2 className=" mx-4 my-4 text-l font-semibold text-center text-grey-light">
-          Spočitejte kolik procent lidi v České republice je vaším potencialním
-          partnerem
-        </h2>
-      </div>
-      <div className="mx-4 my-4 px-4 py-4 rounded-lg bg-white max-w-2xl w-full shadow-md">
-        <p className="text-xs text-grey-dark text-right text-grey-dark">
-          Otazká {questionNumber} z 11
-        </p>
-        <div className="mb-4">{questions[questionNumber]}</div>
-      </div>
-    </>
+    <div className="mx-4 my-4 px-4 py-4 rounded-lg bg-white max-w-2xl w-full shadow-md">
+      <p className="text-xs text-grey-dark text-right text-grey-dark">
+        {questionNumber !== 12 && `Otazká ${questionNumber} z 11`}
+      </p>
+      <div className="mb-4">{questions[questionNumber]}</div>
+    </div>
   )
 }
 

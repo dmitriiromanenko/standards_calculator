@@ -44,11 +44,6 @@ const Select = ({
     setQuestionNumber(questionNumber - 1)
   }
 
-  const onClickSubmit = handleSubmit?.((data) => {
-    console.log(data)
-    // reset({ name: "", team: "" })
-  })
-
   const {
     field: { onChange, value },
     fieldState: { error },
@@ -148,7 +143,11 @@ const Select = ({
           <Button name="Zpět" onClick={onClickChangeQuestionBack} />
         )}
         {questionNumber === 11 && handleSubmit ? (
-          <Button name="Vyhodnotit" onClick={onClickSubmit} />
+          <Button
+            name="Vyhodnotit"
+            isDisabled={!value}
+            onClick={onClickChangeQuestionForward}
+          />
         ) : (
           <Button
             isDisabled={!value}

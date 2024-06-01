@@ -7,10 +7,76 @@
 // Zdroj: https://scitani.gov.cz/vekova-struktura#null
 // 18–80 8,15 mil 77,5 % populace, 50,4% populace zeny
 
+const data = [
+{ age: 18, percentage: 0.9 },
+{ age: 19, percentage: 0.9 },
+{ age: 20, percentage: 0.9 },
+{ age: 21, percentage: 0.9 },
+{ age: 22, percentage: 0.9 },
+{ age: 23, percentage: 0.9 },
+{ age: 24, percentage: 0.9 },
+{ age: 25, percentage: 1.0 },
+{ age: 26, percentage: 1.1 },
+{ age: 27, percentage: 1.2 },
+{ age: 28, percentage: 1.2 },
+{ age: 29, percentage: 1.3 },
+{ age: 30, percentage: 1.3 },
+{ age: 31, percentage: 1.3 },
+{ age: 32, percentage: 1.3 },
+{ age: 33, percentage: 1.3 },
+{ age: 34, percentage: 1.3 },
+{ age: 35, percentage: 1.3 },
+{ age: 36, percentage: 1.4 },
+{ age: 37, percentage: 1.4 },
+{ age: 38, percentage: 1.4 },
+{ age: 39, percentage: 1.4 },
+{ age: 40, percentage: 1.6 },
+{ age: 41, percentage: 1.6 },
+{ age: 42, percentage: 1.7 },
+{ age: 43, percentage: 1.7 },
+{ age: 44, percentage: 1.7 },
+{ age: 45, percentage: 1.8 },
+{ age: 46, percentage: 1.7 },
+{ age: 47, percentage: 1.7 },
+{ age: 48, percentage: 1.6 },
+{ age: 49, percentage: 1.4 },
+{ age: 50, percentage: 1.4 },
+{ age: 51, percentage: 1.3 },
+{ age: 52, percentage: 1.3 },
+{ age: 53, percentage: 1.3 },
+{ age: 54, percentage: 1.3 },
+{ age: 55, percentage: 1.3 },
+{ age: 56, percentage: 1.4 },
+{ age: 57, percentage: 1.4 },
+{ age: 58, percentage: 1.2 },
+{ age: 59, percentage: 1.2 },
+{ age: 60, percentage: 1.1 },
+{ age: 61, percentage: 1.1 },
+{ age: 62, percentage: 1.1 },
+{ age: 63, percentage: 1.3 },
+{ age: 64, percentage: 1.3 },
+{ age: 65, percentage: 1.3 },
+{ age: 66, percentage: 1.3 },
+{ age: 67, percentage: 1.3 },
+{ age: 68, percentage: 1.3 },
+{ age: 69, percentage: 1.3 },
+{ age: 70, percentage: 1.2 },
+{ age: 71, percentage: 1.2 },
+{ age: 72, percentage: 1.1 },
+{ age: 73, percentage: 1.2 },
+{ age: 74, percentage: 1.1 },
+{ age: 75, percentage: 0.9 },
+{ age: 76, percentage: 0.9 },
+{ age: 77, percentage: 0.9 },
+{ age: 78, percentage: 0.7 },
+{ age: 79, percentage: 0.6 },
+{ age: 80, percentage: 0.6 }
+];
+
 // Vyska
 // Zdroj: https://praguemorning.cz/czechs-among-worlds-tallest-people/
 
-//Podle normálního rozložení (Gaussovy křivky) lze odhadnout, kolik mužů se nachází v této výškové kategorii. Průměrná výška je 181 cm a standardní odchylka se obvykle pohybuje kolem 6-7 cm pro mužskou populaci. Z toho můžeme zjistit, že výška 170 cm je přibližně 1,57 standardní odchylky pod průměrem (výpočet
+//Podle normálního rozložení (Gaussovy křivky) lze odhadnout, kolik mužů se nachází v této výškové kategorii. Průměrná výška je 181 cm a standardní odchylka se obvykle pohybuje kolem 6-7 cm pro mužskou populaci. Z toho můžeme zjistit, že výška 170 cm je přibližně 1,57 standardní odchylky pod průměrem výpočet
 // (181−170)/7≈1,57
 //Použitím z-skóre a příslušné hodnoty z tabulky normálního rozložení zjistíme, že přibližně 5,8 % mužů má výšku 170 cm nebo méně.
 // Použitím z-skóre a příslušné hodnoty z tabulky normálního rozložení zjistíme, že přibližně 5,8 % mužů má výšku 170 cm nebo méně.

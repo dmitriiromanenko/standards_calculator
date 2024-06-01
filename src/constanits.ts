@@ -50,21 +50,25 @@ export const NATIONALITY = [
   },
   {
     id: 2,
-    name: "Ukrajinská",
+    name: "Slovenská",
   },
   {
     id: 3,
-    name: "Vietnamská",
+    name: "Ukrajinská",
   },
   {
     id: 4,
-    name: "Polska",
+    name: "Vietnamská",
   },
   {
     id: 5,
+    name: "Polska",
+  },
+  {
+    id: 6,
     name: "Ruska",
   },
-  { id: 6, name: "Jiná" },
+  { id: 7, name: "Jiná" },
 ]
 
 export const EYES_COLOR = [
@@ -120,3 +124,5 @@ export const EDUCATION = [
     name: "Vysokoškolské vzdělání",
   },
 ]
+
+export const POPULATION = 10610000
