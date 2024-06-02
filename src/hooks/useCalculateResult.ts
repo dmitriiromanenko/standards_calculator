@@ -351,7 +351,7 @@ export const useCalculateResult = ({
       education *
       alcohol
 
-    const percentageResult = Math.floor((result / POPULATION) * 100)
+    const percentageResult = Math.round((result / POPULATION) * 100)
     return { result: Math.floor(result), percentageResult }
   }
   return { result: 0, percentageResult: 0 }

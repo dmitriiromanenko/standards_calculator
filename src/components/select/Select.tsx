@@ -142,7 +142,7 @@ const Select = ({
         {questionNumber > 1 && (
           <Button name="Zpět" onClick={onClickChangeQuestionBack} />
         )}
-        {questionNumber === 11 && handleSubmit ? (
+        {questionNumber === 10 && handleSubmit ? (
           <Button
             name="Vyhodnotit"
             isDisabled={!value}

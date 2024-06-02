@@ -35,17 +35,6 @@ function App() {
         />
       ),
       2: (
-        <Select
-          key={2}
-          control={control}
-          name="child"
-          label="Chce-li ditě"
-          optionsArray={YesNoDoesNotMatter}
-          questionNumber={questionNumber}
-          setQuestionNumber={setQuestionNumber}
-        />
-      ),
-      3: (
         <Input
           key={3}
           control={control}
@@ -59,7 +48,7 @@ function App() {
           setQuestionNumber={setQuestionNumber}
         />
       ),
-      4: (
+      3: (
         <Input
           key={4}
           control={control}
@@ -73,7 +62,7 @@ function App() {
           setQuestionNumber={setQuestionNumber}
         />
       ),
-      5: (
+      4: (
         <Input
           key={5}
           control={control}
@@ -87,7 +76,7 @@ function App() {
           setQuestionNumber={setQuestionNumber}
         />
       ),
-      6: (
+      5: (
         <Select
           key={6}
           control={control}
@@ -98,7 +87,7 @@ function App() {
           setQuestionNumber={setQuestionNumber}
         />
       ),
-      7: (
+      6: (
         <Select
           key={7}
           control={control}
@@ -109,7 +98,7 @@ function App() {
           setQuestionNumber={setQuestionNumber}
         />
       ),
-      8: (
+      7: (
         <Select
           key={8}
           control={control}
@@ -120,7 +109,7 @@ function App() {
           setQuestionNumber={setQuestionNumber}
         />
       ),
-      9: (
+      8: (
         <Select
           key={9}
           control={control}
@@ -131,7 +120,7 @@ function App() {
           setQuestionNumber={setQuestionNumber}
         />
       ),
-      10: (
+      9: (
         <Select
           key={10}
           control={control}
@@ -142,7 +131,7 @@ function App() {
           setQuestionNumber={setQuestionNumber}
         />
       ),
-      11: (
+      10: (
         <Select
           key={11}
           control={control}
@@ -154,7 +143,7 @@ function App() {
           handleSubmit={handleSubmit}
         />
       ),
-      12: (
+      11: (
         <ResultComponent
           questionNumber={questionNumber}
           reset={reset}
@@ -169,7 +158,7 @@ function App() {
   return (
     <div className="mx-4 my-4 px-4 py-4 rounded-lg bg-white max-w-2xl w-full shadow-md">
       <p className="text-xs text-grey-dark text-right text-grey-dark">
-        {questionNumber !== 12 && `Otazká ${questionNumber} z 11`}
+        {questionNumber !== 11 && `Otazká ${questionNumber} z 10`}
       </p>
       <div className="mb-4">{questions[questionNumber]}</div>
     </div>

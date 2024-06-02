@@ -2,7 +2,6 @@ import * as yup from "yup"
 
 export type ValidationSchemaType = {
   sex: string
-  child: string
   age: number[]
   height: number[]
   income: number[]
@@ -16,7 +15,6 @@ export type ValidationSchemaType = {
 
 export type NameAlias =
   | "sex"
-  | "child"
   | "age"
   | "height"
   | "income"
@@ -30,7 +28,6 @@ export type NameAlias =
 export const validationSchema: yup.ObjectSchema<ValidationSchemaType> =
   yup.object({
     sex: yup.string().required(),
-    child: yup.string().required(),
     age: yup.array().required().of(yup.number().required()),
     height: yup.array().required().of(yup.number().required()),
     income: yup.array().required().of(yup.number().required()),

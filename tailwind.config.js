@@ -12,6 +12,13 @@ module.exports = {
       pink: { DEFAULT: "#ff297c", dark: "#E6256C", light: "#ff297c66" },
       purple: "#E100B4",
     },
+    screens: {
+      sm: "320px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     extend: {
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
