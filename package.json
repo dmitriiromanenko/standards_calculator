@@ -1,6 +1,7 @@
 {
   "name": "calculator-of-standards",
   "private": true,
+  "homepage": "https://dmitriiromanenko.github.io/standards_calculator",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
