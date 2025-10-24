@@ -257,7 +257,6 @@ export const useCalculateResult = ({
   data?: ValidationSchemaType
 }) => {
   if (data) {
-    console.log(data, "data from useCalcResult")
     let age = 0
 
     for (const item of ageData) {
@@ -324,19 +323,6 @@ export const useCalculateResult = ({
     const sex = sexData[data.sex] / 100
 
     const smokes = smokesData[data.sex][data.smokes] / 100
-
-    console.log(
-      age / 100,
-      heightResult,
-      salary / 100,
-      smokes,
-      sex,
-      nationality,
-      married,
-      eyecolor,
-      education,
-      alcohol
-    )
 
     const result =
       POPULATION *

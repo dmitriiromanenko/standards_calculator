@@ -1,10 +1,10 @@
-import { Control, useController } from "react-hook-form"
-import { NameAlias, ValidationSchemaType } from "../../validation"
-import Button from "../../button/Button"
-import Section from "../section/Section"
 import { Dispatch } from "react"
+import { Control, useController } from "react-hook-form"
 import RangeSlider from "react-range-slider-input"
 import "react-range-slider-input/dist/style.css"
+import { NameAlias, ValidationSchemaType } from "../../validation"
+import Button from "../button/Button"
+import Section from "../section/Section"
 import "./styles.css"
 
 type InputProps = {
@@ -47,7 +47,6 @@ const Input = ({
     setQuestionNumber(questionNumber - 1)
   }
 
-  console.log(value, defaultValue, "input value")
 
   return (
     <>

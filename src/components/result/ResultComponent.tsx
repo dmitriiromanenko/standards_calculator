@@ -1,22 +1,20 @@
+import { UserIcon } from "@heroicons/react/16/solid"
 import { Dispatch, useEffect, useState } from "react"
 import { UseFormHandleSubmit, UseFormReset } from "react-hook-form"
-import { ValidationSchemaType } from "../../validation"
-import Button from "../../button/Button"
-import { useCalculateResult } from "../../hooks/useCalculateResult"
 import { ClockLoader } from "react-spinners"
-import { UserIcon } from "@heroicons/react/16/solid"
 import { POPULATION } from "../../constanits"
+import { useCalculateResult } from "../../hooks/useCalculateResult"
+import { ValidationSchemaType } from "../../validation"
+import Button from "../button/Button"
 
 type ResultProps = {
   setQuestionNumber: Dispatch<React.SetStateAction<number>>
-  questionNumber: number
   reset: UseFormReset<ValidationSchemaType>
   handleSubmit: UseFormHandleSubmit<ValidationSchemaType, undefined>
 }
 
 const ResultComponent = ({
   setQuestionNumber,
-  questionNumber,
   handleSubmit,
   reset,
 }: ResultProps) => {
@@ -24,11 +22,9 @@ const ResultComponent = ({
   const [data, setData] = useState<ValidationSchemaType>()
 
   const onClickSubmit = handleSubmit?.((data) => {
-    console.log(data)
     setData(data)
   })
   const { result, percentageResult } = useCalculateResult({ data })
-  console.log(result, "data from select")
 
   const drawSquare = (percentage: number) => {
     const size = 10
@@ -71,10 +67,10 @@ const ResultComponent = ({
           <div className="my-4 flex md:flex-row sm:flex-col items-center justify-center">
             <div className="flex mx-4 my-4 flex-col sm:items-center md:items-start">
               <span className="mx-4 text-2xl font-semibold text-left text-pink">
-                {result.toLocaleString("de-DE")} lidí
+                {result.toLocaleString("de-DE").replaceAll(",", " ")} lidí
               </span>
               <span className="mx-4 text-xs font-semibold text-left text-pink">
-                z {POPULATION.toLocaleString("de-DE")}
+                z {POPULATION.toLocaleString("de-DE").replaceAll(",", " ")}
               </span>
               <span className="mx-4 mt-4 text-xs font-semibold sm:text-center md:text-left text-pink">
                 {`Přibližně  ${percentageResult}%`} lidí v České republice

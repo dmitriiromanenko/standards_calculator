@@ -1,5 +1,8 @@
+import { yupResolver } from "@hookform/resolvers/yup"
 import { ReactNode, useMemo, useState } from "react"
+import { useForm } from "react-hook-form"
 import Input from "./components/input/Input"
+import ResultComponent from "./components/result/ResultComponent"
 import Select from "./components/select/Select"
 import {
   EDUCATION,
@@ -9,10 +12,7 @@ import {
   YesNo,
   YesNoDoesNotMatter,
 } from "./constanits"
-import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
 import { validationSchema } from "./validation"
-import ResultComponent from "./components/result/ResultComponent"
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1)
@@ -145,7 +145,6 @@ function App() {
       ),
       11: (
         <ResultComponent
-          questionNumber={questionNumber}
           reset={reset}
           handleSubmit={handleSubmit}
           setQuestionNumber={setQuestionNumber}

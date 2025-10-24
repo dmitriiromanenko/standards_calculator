@@ -7,10 +7,10 @@ import {
   Transition,
 } from "@headlessui/react"
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid"
+import { Dispatch } from "react"
 import { Control, UseFormHandleSubmit, useController } from "react-hook-form"
 import { NameAlias, ValidationSchemaType } from "../../validation"
-import { Dispatch } from "react"
-import Button from "../../button/Button"
+import Button from "../button/Button"
 import Section from "../section/Section"
 
 function classNames(...classes: string[]) {
