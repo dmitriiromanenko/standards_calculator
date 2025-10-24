@@ -2,7 +2,7 @@ name: Deploy React App to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main] # или master, если у тебя такая ветка
 
 permissions:
   contents: write
@@ -19,12 +19,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: "yarn"
 
       - name: Install dependencies 📦
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Build app 🏗️
-        run: npm run build
+        run: yarn build
 
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v4
